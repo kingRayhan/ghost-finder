@@ -1,5 +1,13 @@
+/**
+ * Ghost Finder
+ * v1.0.0
+ * @author kingrayhan
+ * @url https://rayhan.info
+ */
+
 import GhostContentAPI from '@tryghost/content-api'
 import DOMPurify from 'dompurify'
+import moment from 'moment'
 
 // TODO: time rendering will be added
 class GhostFinder {
@@ -163,4 +171,4 @@ class GhostFinder {
     }
 }
 
-global.GhostSearch = GhostSearch
+global.GhostFinder = GhostFinder

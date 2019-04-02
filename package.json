@@ -10,21 +10,20 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
-    "keywords": [],
     "author": {
-        "name": "electronthemes",
-        "email": "electronthemes@gmail.com",
-        "url": "https://electronthemes.com"
+        "name": "kingrayhan",
+        "email": "rayhan095@gmail.com",
+        "url": "https://rayhan.info"
     },
     "license": "MIT",
     "devDependencies": {
-        "laravel-mix": "^4.0.15",
-        "vue-template-compiler": "^2.6.10"
+        "laravel-mix": "^4.0.15"
     },
     "dependencies": {
         "@tryghost/content-api": "^1.2.0",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "cross-env": "^5.2.0",
-        "dompurify": "^1.0.10"
+        "dompurify": "^1.0.10",
+        "moment": "^2.24.0"
     }
 }
