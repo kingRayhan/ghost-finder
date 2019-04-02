@@ -1,6 +1,7 @@
 import GhostContentAPI from '@tryghost/content-api'
 import DOMPurify from 'dompurify'
 
+// TODO: time
 class GhostSearch {
     constructor({
         selector = null,
