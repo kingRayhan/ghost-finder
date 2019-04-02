@@ -2,7 +2,7 @@ import GhostContentAPI from '@tryghost/content-api'
 import DOMPurify from 'dompurify'
 
 // TODO: time rendering will be added
-class GhostSearch {
+class GhostFinder {
     constructor({
         selector = null,
         contentApiKey = null,
