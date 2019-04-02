@@ -1,8 +1,7 @@
 {
     "name": "ghost-search",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "description": "The most advance ghost search plugin",
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -12,8 +11,12 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": {
+        "name": "electronthemes",
+        "email": "electronthemes@gmail.com",
+        "url": "https://electronthemes.com"
+    },
+    "license": "MIT",
     "devDependencies": {
         "laravel-mix": "^4.0.15",
         "vue-template-compiler": "^2.6.10"
@@ -21,6 +24,7 @@
     "dependencies": {
         "@tryghost/content-api": "^1.2.0",
         "babel-plugin-transform-class-properties": "^6.24.1",
-        "cross-env": "^5.2.0"
+        "cross-env": "^5.2.0",
+        "dompurify": "^1.0.10"
     }
 }
