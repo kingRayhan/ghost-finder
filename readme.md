@@ -19,7 +19,7 @@
 
 **Activate the plugin**
 
-```
+```html
 <script>
     new GhostFinder({
         input: '#search-input',
