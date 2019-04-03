@@ -23,9 +23,9 @@
 <script>
     new GhostFinder({
         input: '#search-input',
+        showResult: '#search-result',
         homeUrl: '{{ @site.url }}',
         contentApiKey: //CONTENT API KEY...,
-        showResult: '#search-result',
     })
 </script>
 ```
