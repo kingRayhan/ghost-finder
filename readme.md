@@ -4,16 +4,32 @@
 
 ## Options
 
-| Name                 | Default Value       | Details                                                           |
-| -------------------- | ------------------- | ----------------------------------------------------------------- |
-| input                | `null` **Required** | DOM selector of search input                                      |
-| showResult           | `null` **Required** | DOM selector where search result will be pluged-in                |
-| homeUrl              | `null` **Required** | Your ghost site url                                               |
-| contentApiKey        | `null` **Required** | content api key                                                   |
-| resultTemplate       | see bellow          | Result wrapper template for search result                         |
-| singleResultTemplate | see bellow          | Single search result template                                     |
-| excerpt_length       | 15                  | word count to show in ##excerpt variable                          |
-| time_format          | `'MMMM Do YYYY'`    | Time format string for `##created_at` and `##updated_at` variable |
+| Name                 | Default Value       | Details                                            |
+| -------------------- | ------------------- | -------------------------------------------------- |
+| input                | `null` **Required** | DOM selector of search input                       |
+| showResult           | `null` **Required** | DOM selector where search result will be pluged-in |
+| homeUrl              | `null` **Required** | Your ghost site url                                |
+| contentApiKey        | `null` **Required** | content api key                                    |
+| resultTemplate       | see bellow          | Result wrapper template for search result          |
+| singleResultTemplate | see bellow          | Single search result template                      |
+| excerpt_length       | 15                  | word count to show in ##excerpt variable           |
+| time_format          | `'MMMM Do YYYY'`    | Time format string for `##published_at` variable   |
+
+## Default templates
+
+**Result Template**
+
+```html
+<ul class="search-results-wrapper">
+    ##results
+</ul>
+```
+
+**Single Result Template**
+
+```html
+<li><a href="##url">##title</a></li>
+```
 
 ## Variables
 
