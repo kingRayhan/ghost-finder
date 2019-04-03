@@ -8,27 +8,65 @@
 import GhostContentAPI from '@tryghost/content-api'
 import DOMPurify from 'dompurify'
 import moment from 'moment'
+import swal from 'sweetalert'
+
+const resultDefaultTemplate = `<ul class="search-results-wrapper">
+                                    ##results
+                                </ul>`
+const singleResultDefaultTemplate = `<li><a href="##url">##title</a></li>`
 
 // TODO: add matcher parameter
 class GhostFinder {
+    hasError = false
+
     constructor({
-        selector = null,
-        contentApiKey = null,
-        homeUrl,
-        fields = 'title,slug,html',
+        input,
         showResult,
-        resultTemplate,
-        singleResultTemplate,
+        contentApiKey,
+        homeUrl,
+        resultTemplate = resultDefaultTemplate,
+        singleResultTemplate = singleResultDefaultTemplate,
         excerpt_length = 15,
         time_format = 'MMMM Do YYYY',
     }) {
         /**
+         * Chekc for errors
+         */
+        if (input === undefined) {
+            return swal(
+                'Ghost Finder Error',
+                `Provide "input" selector in options`,
+                'error'
+            )
+        }
+        if (showResult === undefined) {
+            return swal(
+                'Ghost Finder Error',
+                `Provide "showResult" selector in options`,
+                'error'
+            )
+        }
+        if (homeUrl === undefined) {
+            return swal(
+                'Ghost Finder Error',
+                `Provide "homeUrl" selector in options`,
+                'error'
+            )
+        }
+        if (contentApiKey === undefined) {
+            return swal(
+                'Ghost Finder Error',
+                `Provide "contentApiKey" selector in options`,
+                'error'
+            )
+        }
+
+        /**
          * Options
          */
-        this.input = document.querySelector(selector)
+        this.input = document.querySelector(input)
         this.homeUrl = homeUrl
         this.contentApiKey = contentApiKey
-        this.fields = fields
         this.resultTemplate = resultTemplate
         this.singleResultTemplate = singleResultTemplate
         this.showResult = document.querySelector(showResult)
@@ -71,11 +109,7 @@ class GhostFinder {
         this.searchTerm = e.target.value
         const posts = await this.api.posts.browse({
             limit: 'all',
-            fields: `${
-                this.fields.split(',').includes('excerpt')
-                    ? this.fields + ',html'
-                    : this.fields
-            }`,
+            fields: `title,url,slug,html,feature_image,published_at,primary_author,primary_tag`,
             include: 'tags,authors',
         })
 
@@ -94,44 +128,41 @@ class GhostFinder {
                     let fieldsArray = this.fields.split(',')
 
                     /**
-                     * Check fileds has primary_tag
+                     * ##title
                      */
-                    if (fieldsArray.includes('primary_tag')) {
-                        /**
-                         * Tag fileds
-                         * ------------------------
-                         * primary_tag_name
-                         * primary_tag_url
-                         */
-                        if (post.primary_tag) {
-                            replacerObj['primary_tag_name'] =
-                                post.primary_tag.name
-                            replacerObj['primary_tag_url'] =
-                                post.primary_tag.url
-                        }
+                    if (post.title) {
+                        replacerObj['title'] = post.title
+                    }
+                    /**
+                     * ##url
+                     */
+                    if (post.title) {
+                        replacerObj['url'] = post.url
                     }
 
                     /**
-                     * Check fileds has primary_author
+                     * Tag fileds
+                     * ------------------------
+                     * primary_tag_name
+                     * primary_tag_url
                      */
-                    if (fieldsArray.includes('primary_author')) {
-                        /**
-                         * Author fileds
-                         * ------------------------
-                         * primary_author_name
-                         * primary_author_url
-                         * primary_author_avater
-                         */
-                        if (post.primary_author) {
-                            const {
-                                name,
-                                profile_image,
-                                url,
-                            } = post.primary_author
-                            replacerObj['primary_author_name'] = name
-                            replacerObj['primary_author_url'] = url
-                            replacerObj['primary_author_avater'] = profile_image
-                        }
+                    if (post.primary_tag) {
+                        replacerObj['primary_tag_name'] = post.primary_tag.name
+                        replacerObj['primary_tag_url'] = post.primary_tag.url
+                    }
+
+                    /**
+                     * Author fileds
+                     * ------------------------
+                     * primary_author_name
+                     * primary_author_url
+                     * primary_author_avater
+                     */
+                    if (post.primary_author) {
+                        const { name, profile_image, url } = post.primary_author
+                        replacerObj['primary_author_name'] = name
+                        replacerObj['primary_author_url'] = url
+                        replacerObj['primary_author_avater'] = profile_image
                     }
 
                     /**
@@ -139,48 +170,27 @@ class GhostFinder {
                      * ---------------
                      * ##excerpt
                      */
-                    if (fieldsArray.includes('excerpt')) {
-                        if (post.html) {
-                            let excerpt = DOMPurify.sanitize(post.html, {
-                                ALLOWED_TAGS: [''],
-                            })
-                                .split(' ')
-                                .slice(0, this.excerpt_length)
-                                .join(' ')
-                            replacerObj['excerpt'] = excerpt
-                        }
+                    if (post.html) {
+                        let excerpt = DOMPurify.sanitize(post.html, {
+                            ALLOWED_TAGS: [''],
+                        })
+                            .split(' ')
+                            .slice(0, this.excerpt_length)
+                            .join(' ')
+                        replacerObj['excerpt'] = excerpt
                     }
 
                     /**
                      * Time
                      * ---------------
-                     * ##created_at
-                     * ##updated_at
+                     * ##published_at
                      */
-                    if (
-                        fieldsArray.includes('created_at') ||
-                        fieldsArray.includes('updated_at')
-                    ) {
-                        if (post.created_at) {
-                            replacerObj['created_at'] = moment(
-                                post.created_at
-                            ).format(this.time_format)
-                        }
-                        if (post.updated_at) {
-                            replacerObj['updated_at'] = moment(
-                                post.updated_at
-                            ).format(this.time_format)
-                        }
-                    }
 
-                    /**
-                     * itarate through all replacer
-                     */
-                    let varIsNot = ['excerpt', 'created_at', 'updated_ta']
-                    fieldsArray.forEach(variable => {
-                        if (!varIsNot.includes(variable))
-                            replacerObj[variable] = post[variable]
-                    })
+                    if (post.created_at) {
+                        replacerObj['published_at'] = moment(
+                            post.created_at
+                        ).format(this.time_format)
+                    }
 
                     return this.allReplace(
                         this.singleResultTemplate,
