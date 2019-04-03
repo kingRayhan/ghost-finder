@@ -1,8 +1,38 @@
 ## Ghost Finder
 
+### Installation
+
+**Include script**
+
+```html
+<script src="{{asset "ghost-search/dist/ghost-finder.js"}}"></script>
+```
+
+**Setup markup**
+
+```html
+<div>
+    <input id="search-input" type="text" placeholder="Type to search" />
+    <div id="search-result"></div>
+</div>
+```
+
+**Activate the plugin**
+
+```
+<script>
+    new GhostFinder({
+        input: '#search-input',
+        homeUrl: '{{ @site.url }}',
+        contentApiKey: //CONTENT API KEY...,
+        showResult: '#search-result',
+    })
+</script>
+```
+
 ---
 
-## Options
+### Options
 
 | Name                 | Default Value       | Details                                            |
 | -------------------- | ------------------- | -------------------------------------------------- |
@@ -15,7 +45,7 @@
 | excerpt_length       | 15                  | word count to show in `##excerpt` variable         |
 | time_format          | `'MMMM Do YYYY'`    | Time format string for `##published_at` variable   |
 
-## Default templates
+### Default templates
 
 **Result Template**
 
@@ -31,7 +61,7 @@
 <li><a href="##url">##title</a></li>
 ```
 
-## Variables
+### Variables
 
 | Field Name                | Purpose                                                             |
 | ------------------------- | ------------------------------------------------------------------- |
