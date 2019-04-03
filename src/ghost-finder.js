@@ -125,8 +125,6 @@ class GhostFinder {
                 .map(post => {
                     let replacerObj = {}
 
-                    let fieldsArray = this.fields.split(',')
-
                     /**
                      * ##title
                      */
@@ -188,7 +186,7 @@ class GhostFinder {
 
                     if (post.created_at) {
                         replacerObj['published_at'] = moment(
-                            post.created_at
+                            post.published_at
                         ).format(this.time_format)
                     }
 

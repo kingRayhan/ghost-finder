@@ -23239,12 +23239,9 @@ var GhostFinder = function GhostFinder(_ref) {
               } else {
                 result = filteredPosts.map(function (post) {
                   var replacerObj = {};
-
-                  var fieldsArray = _this.fields.split(',');
                   /**
                    * ##title
                    */
-
 
                   if (post.title) {
                     replacerObj['title'] = post.title;
@@ -23308,7 +23305,7 @@ var GhostFinder = function GhostFinder(_ref) {
 
 
                   if (post.created_at) {
-                    replacerObj['published_at'] = moment__WEBPACK_IMPORTED_MODULE_3___default()(post.created_at).format(_this.time_format);
+                    replacerObj['published_at'] = moment__WEBPACK_IMPORTED_MODULE_3___default()(post.published_at).format(_this.time_format);
                   }
 
                   return _this.allReplace(_this.singleResultTemplate, replacerObj);

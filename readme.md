@@ -12,7 +12,7 @@
 | contentApiKey        | `null` **Required** | content api key                                    |
 | resultTemplate       | see bellow          | Result wrapper template for search result          |
 | singleResultTemplate | see bellow          | Single search result template                      |
-| excerpt_length       | 15                  | word count to show in ##excerpt variable           |
+| excerpt_length       | 15                  | word count to show in `##excerpt` variable         |
 | time_format          | `'MMMM Do YYYY'`    | Time format string for `##published_at` variable   |
 
 ## Default templates
