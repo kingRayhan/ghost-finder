@@ -1,6 +1,6 @@
 /**
  * Ghost Finder
- * v1.0.0
+ * v1.0.1
  * @author kingrayhan
  * @url https://rayhan.info
  */
@@ -9,7 +9,7 @@ import GhostContentAPI from '@tryghost/content-api'
 import DOMPurify from 'dompurify'
 import moment from 'moment'
 
-// TODO: time rendering will be added
+// TODO: add matcher parameter
 class GhostFinder {
     constructor({
         selector = null,
@@ -20,6 +20,7 @@ class GhostFinder {
         resultTemplate,
         singleResultTemplate,
         excerpt_length = 15,
+        time_format = 'MMMM Do YYYY',
     }) {
         /**
          * Options
@@ -33,6 +34,7 @@ class GhostFinder {
         this.showResult = document.querySelector(showResult)
 
         this.excerpt_length = excerpt_length
+        this.time_format = time_format
 
         /**
          * trigger when user type to search
@@ -57,7 +59,7 @@ class GhostFinder {
         })
     }
 
-    // source: https://stackoverflow.com/a/17606289/3705299
+    // Concept source: https://stackoverflow.com/a/17606289/3705299
     allReplace = (retStr, obj) => {
         for (var x in obj) {
             retStr = retStr.replace(new RegExp(`##${x}`, 'g'), obj[x])
@@ -150,10 +152,33 @@ class GhostFinder {
                     }
 
                     /**
+                     * Time
+                     * ---------------
+                     * ##created_at
+                     * ##updated_at
+                     */
+                    if (
+                        fieldsArray.includes('created_at') ||
+                        fieldsArray.includes('updated_at')
+                    ) {
+                        if (post.created_at) {
+                            replacerObj['created_at'] = moment(
+                                post.created_at
+                            ).format(this.time_format)
+                        }
+                        if (post.updated_at) {
+                            replacerObj['updated_at'] = moment(
+                                post.updated_at
+                            ).format(this.time_format)
+                        }
+                    }
+
+                    /**
                      * itarate through all replacer
                      */
+                    let varIsNot = ['excerpt', 'created_at', 'updated_ta']
                     fieldsArray.forEach(variable => {
-                        if (variable !== 'excerpt')
+                        if (!varIsNot.includes(variable))
                             replacerObj[variable] = post[variable]
                     })
 
@@ -161,8 +186,10 @@ class GhostFinder {
                         this.singleResultTemplate,
                         replacerObj
                     )
-                })
+                }) // map
                 .join(' ')
+
+            // Push result html
             this.showResult.innerHTML =
                 this.resultTemplate !== undefined
                     ? this.resultTemplate.replace('##results', result)
