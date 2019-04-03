@@ -23178,7 +23178,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
-var resultDefaultTemplate = "<ul class=\"search-results-wrapper\">\n                                    ##results\n                                </ul>";
+var resultDefaultTemplate = "<ul class=\"search-results-wrapper\">\n                                    <p>Search match(es): ##resultCount</p>\n                                    ##results\n                                </ul>";
 var singleResultDefaultTemplate = "<li><a href=\"##url\">##title</a></li>"; // TODO: add matcher parameter
 
 var GhostFinder = function GhostFinder(_ref) {
@@ -23200,7 +23200,7 @@ var GhostFinder = function GhostFinder(_ref) {
 
   _classCallCheck(this, GhostFinder);
 
-  this.hasError = false;
+  this.resultCount = 0;
 
   this.allReplace = function (retStr, obj) {
     for (var x in obj) {
@@ -23233,7 +23233,8 @@ var GhostFinder = function GhostFinder(_ref) {
               posts = _context.sent;
               filteredPosts = posts.filter(function (post) {
                 return post.title.toLowerCase().includes(_this.searchTerm.toLowerCase());
-              }); // if searchTerm's length is less then 1 character then stop here...
+              });
+              _this.resultCount = filteredPosts.length; // if searchTerm's length is less then 1 character then stop here...
 
               if (_this.searchTerm.length === 0) {
                 _this.showResult.innerHTML = '';
@@ -23317,15 +23318,20 @@ var GhostFinder = function GhostFinder(_ref) {
                   if (post.published_at) {
                     replacerObj['published_at'] = moment__WEBPACK_IMPORTED_MODULE_3___default()(post.published_at).format(_this.time_format);
                   }
+                  /**
+                   * Result Count
+                   */
 
+
+                  replacerObj['resultCount'] = _this.resultCount;
                   return _this.allReplace(_this.singleResultTemplate, replacerObj);
                 }) // map
                 .join(' '); // Push result html
 
-                _this.showResult.innerHTML = _this.resultTemplate !== undefined ? _this.resultTemplate.replace('##results', result) : result;
+                _this.showResult.innerHTML = _this.resultTemplate !== undefined ? _this.resultTemplate.replace('##results', result).replace('##resultCount', _this.resultCount) : result;
               }
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -23374,14 +23380,9 @@ var GhostFinder = function GhostFinder(_ref) {
    */
 
   this.input.addEventListener('keyup', this.doSearch);
-
-  if (contentApiKey === '' || contentApiKey === undefined || contentApiKey === null) {
-    return console.error('You must need to provide contentApiKey');
-  }
   /**
    * Initialize ghost content api constructor
    */
-
 
   this.api = new _tryghost_content_api__WEBPACK_IMPORTED_MODULE_1__["default"]({
     url: this.homeUrl,

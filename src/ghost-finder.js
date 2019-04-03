@@ -11,13 +11,14 @@ import moment from 'moment'
 import swal from 'sweetalert'
 
 const resultDefaultTemplate = `<ul class="search-results-wrapper">
+                                    <p>Search match(es): ##resultCount</p>
                                     ##results
                                 </ul>`
 const singleResultDefaultTemplate = `<li><a href="##url">##title</a></li>`
 
 // TODO: add matcher parameter
 class GhostFinder {
-    hasError = false
+    resultCount = 0
 
     constructor({
         input,
@@ -79,14 +80,6 @@ class GhostFinder {
          */
         this.input.addEventListener('keyup', this.doSearch)
 
-        if (
-            contentApiKey === '' ||
-            contentApiKey === undefined ||
-            contentApiKey === null
-        ) {
-            return console.error('You must need to provide contentApiKey')
-        }
-
         /**
          * Initialize ghost content api constructor
          */
@@ -116,6 +109,8 @@ class GhostFinder {
         const filteredPosts = posts.filter(post =>
             post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
         )
+
+        this.resultCount = filteredPosts.length
 
         // if searchTerm's length is less then 1 character then stop here...
         if (this.searchTerm.length === 0) {
@@ -197,6 +192,11 @@ class GhostFinder {
                         ).format(this.time_format)
                     }
 
+                    /**
+                     * Result Count
+                     */
+                    replacerObj['resultCount'] = this.resultCount
+
                     return this.allReplace(
                         this.singleResultTemplate,
                         replacerObj
@@ -207,7 +207,9 @@ class GhostFinder {
             // Push result html
             this.showResult.innerHTML =
                 this.resultTemplate !== undefined
-                    ? this.resultTemplate.replace('##results', result)
+                    ? this.resultTemplate
+                          .replace('##results', result)
+                          .replace('##resultCount', this.resultCount)
                     : result
         }
     }

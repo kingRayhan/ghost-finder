@@ -1,6 +1,6 @@
-## Ghost Finder
+# Ghost Finder
 
-### Installation
+## Installation
 
 **Include script**
 
@@ -50,6 +50,7 @@
 
 ```html
 <ul class="search-results-wrapper">
+    <p>Search match(es): ##resultCount</p>
     ##results
 </ul>
 ```
@@ -74,3 +75,4 @@
 | `##excerpt`               | show some words of the post content. Default words count is 15      |
 | `##published_at`          | Post publication date. Format can be change by `time_format` option |
 | `##feature_image`         | Post featured image url                                             |
+| `##resultCount`           | Matched result count                                                |
