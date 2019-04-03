@@ -4,6 +4,7 @@
 ![](https://img.shields.io/github/issues-raw/electronthemes/ghost-finder.svg?style=plastic)
 ![](https://img.shields.io/github/last-commit/electronthemes/ghost-finder.svg)
 ![](https://img.shields.io/github/languages/code-size/electronthemes/ghost-finder.svg)
+![](https://img.shields.io/github/package-json/v/electronthemes/ghost-finder.svg)
 
 ## Installation
 
