@@ -7,6 +7,8 @@
 
 ## Installation
 
+Download [ghost-finder-1.0.0.zip](https://github.com/electronthemes/ghost-finder/archive/v1.0.0.zip)
+
 **Include script**
 
 ```html
