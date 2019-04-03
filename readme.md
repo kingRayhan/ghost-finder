@@ -39,7 +39,7 @@
 | input                | `null` **Required** | DOM selector of search input                       |
 | showResult           | `null` **Required** | DOM selector where search result will be pluged-in |
 | homeUrl              | `null` **Required** | Your ghost site url                                |
-| contentApiKey        | `null` **Required** | content api key                                    |
+| contentApiKey        | `null` **Required** | content api key. [See here](https://electronthemes.github.io/delas#search-api-and-activation) how to create content api key                                  |
 | resultTemplate       | see bellow          | Result wrapper template for search result          |
 | singleResultTemplate | see bellow          | Single search result template                      |
 | excerpt_length       | 15                  | word count to show in `##excerpt` variable         |
