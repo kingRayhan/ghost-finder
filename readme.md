@@ -28,6 +28,8 @@
     })
 </script>
 ```
+To see how you can get contentApiKey , [Click Here](https://github.com/electronthemes/ghost-finder/wiki/How-to-get-contentApiKey-%3F)
+
 
 ---
 
