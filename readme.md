@@ -8,7 +8,7 @@
 
 ## Installation
 
-Download [ghost-finder-1.0.0.zip](https://github.com/electronthemes/ghost-finder/archive/v1.0.0.zip)
+![download](https://img.icons8.com/material-sharp/24/000000/download-2.png) Download [ghost-finder-1.0.0.zip](https://github.com/electronthemes/ghost-finder/archive/v1.0.0.zip)
 
 **Include script**
 
