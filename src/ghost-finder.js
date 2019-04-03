@@ -23,7 +23,7 @@ class GhostFinder {
         input,
         showResult,
         contentApiKey,
-        homeUrl,
+        homeUrl = window.location.origin,
         resultTemplate = resultDefaultTemplate,
         singleResultTemplate = singleResultDefaultTemplate,
         excerpt_length = 15,
@@ -162,6 +162,13 @@ class GhostFinder {
                         replacerObj['primary_author_url'] = url
                         replacerObj['primary_author_avater'] = profile_image
                     }
+                    /**
+                     * ------------------------
+                     * feature_image
+                     */
+                    if (post.feature_image) {
+                        replacerObj['feature_image'] = post.feature_image
+                    }
 
                     /**
                      * Excerpt
@@ -184,7 +191,7 @@ class GhostFinder {
                      * ##published_at
                      */
 
-                    if (post.created_at) {
+                    if (post.published_at) {
                         replacerObj['published_at'] = moment(
                             post.published_at
                         ).format(this.time_format)

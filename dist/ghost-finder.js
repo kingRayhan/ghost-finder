@@ -23187,7 +23187,8 @@ var GhostFinder = function GhostFinder(_ref) {
   var input = _ref.input,
       showResult = _ref.showResult,
       contentApiKey = _ref.contentApiKey,
-      homeUrl = _ref.homeUrl,
+      _ref$homeUrl = _ref.homeUrl,
+      homeUrl = _ref$homeUrl === void 0 ? window.location.origin : _ref$homeUrl,
       _ref$resultTemplate = _ref.resultTemplate,
       resultTemplate = _ref$resultTemplate === void 0 ? resultDefaultTemplate : _ref$resultTemplate,
       _ref$singleResultTemp = _ref.singleResultTemplate,
@@ -23285,6 +23286,15 @@ var GhostFinder = function GhostFinder(_ref) {
                     replacerObj['primary_author_avater'] = profile_image;
                   }
                   /**
+                   * ------------------------
+                   * feature_image
+                   */
+
+
+                  if (post.feature_image) {
+                    replacerObj['feature_image'] = post.feature_image;
+                  }
+                  /**
                    * Excerpt
                    * ---------------
                    * ##excerpt
@@ -23304,7 +23314,7 @@ var GhostFinder = function GhostFinder(_ref) {
                    */
 
 
-                  if (post.created_at) {
+                  if (post.published_at) {
                     replacerObj['published_at'] = moment__WEBPACK_IMPORTED_MODULE_3___default()(post.published_at).format(_this.time_format);
                   }
 

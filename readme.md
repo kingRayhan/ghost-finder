@@ -24,7 +24,6 @@
     new GhostFinder({
         input: '#search-input',
         showResult: '#search-result',
-        homeUrl: '{{ @site.url }}',
         contentApiKey: //CONTENT API KEY...,
     })
 </script>
@@ -38,7 +37,7 @@
 | -------------------- | ------------------- | -------------------------------------------------- |
 | input                | `null` **Required** | DOM selector of search input                       |
 | showResult           | `null` **Required** | DOM selector where search result will be pluged-in |
-| homeUrl              | `null` **Required** | Your ghost site url                                |
+| homeUrl              | current website url | Your ghost site url                                |
 | contentApiKey        | `null` **Required** | content api key                                    |
 | resultTemplate       | see bellow          | Result wrapper template for search result          |
 | singleResultTemplate | see bellow          | Single search result template                      |
@@ -74,3 +73,4 @@
 | `##primary_author_avater` | Profile photo of primary author                                     |
 | `##excerpt`               | show some words of the post content. Default words count is 15      |
 | `##published_at`          | Post publication date. Format can be change by `time_format` option |
+| `##feature_image`         | Post featured image url                                             |
