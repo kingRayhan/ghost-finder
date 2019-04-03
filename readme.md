@@ -2,12 +2,10 @@
 
 ---
 
-The most advance ghost search plugin for [Ghost](https://ghost.org)
+## Options
 
-## Setup
-
-#### Step 1 - Setup Content API Client Library
-
-```js
-<script src="{{asset "ghost-search/dist/ghost-finder.js"}}"></script>
-```
+| Name          | Default Value       | Details                                                                            |
+| ------------- | ------------------- | ---------------------------------------------------------------------------------- |
+| selector      | `null` **Required** | DOM selector into which search results should be inserted. This value is required. |
+| homeUrl       | `null` **Required** | Your ghost site url                                                                |
+| contentApiKey | `null` **Required** | content api key                                                                    |
