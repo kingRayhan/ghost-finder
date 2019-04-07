@@ -14,7 +14,7 @@
 **Include script**
 
 ```html
-<script src="{{asset "ghost-search/dist/ghost-finder.js"}}"></script>
+<script src="{{asset "ghost-finder/dist/ghost-finder.js"}}"></script>
 ```
 
 **Setup markup**
