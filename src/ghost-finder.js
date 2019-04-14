@@ -18,6 +18,7 @@ const singleResultDefaultTemplate = `<li><a href="##url">##title</a></li>`
 
 // TODO: add matcher parameter
 // TODO: event Type
+// TODO: Templating in markup
 class GhostFinder {
     resultCount = 0
 
