@@ -1,6 +1,6 @@
 {
   "name": "ghost-finder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The most advance ghost search plugin",
   "main": "dist/ghost-finder.js",
   "scripts": {
@@ -8,11 +8,7 @@
     "dev": "babel src -d dist --watch",
     "test": "babel-node test/index"
   },
-  "author": {
-    "name": "King Rayhan",
-    "email": "md.raihan095@northsouth.edu",
-    "url": "https://rayhan.info"
-  },
+  "author": "King Rayhan <md.raihan095@northsouth.edu> (https://rayhan.info)",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -23,5 +19,18 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "dompurify": "^1.0.10",
     "moment": "^2.24.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electronthemes/ghost-finder.git"
+  },
+  "keywords": [
+    "ghost",
+    "ghost-search",
+    "search"
+  ],
+  "bugs": {
+    "url": "https://github.com/electronthemes/ghost-finder/issues"
+  },
+  "homepage": "https://github.com/electronthemes/ghost-finder#readme"
 }

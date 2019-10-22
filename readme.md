@@ -36,14 +36,12 @@ npm install ghost-finder
 
 **Activate the plugin**
 
-```html
-<script>
-  new GhostFinder({
-      input: '#search-input',
-      showResult: '#search-result',
-      contentApiKey: //CONTENT API KEY...,
-  })
-</script>
+```js
+new GhostFinder({
+    input: '#search-input',
+    showResult: '#search-result',
+    contentApiKey: //CONTENT API KEY...,
+})
 ```
 
 To see how you can get contentApiKey , [Click Here](https://github.com/electronthemes/ghost-finder/wiki/How-to-get-contentApiKey-%3F)
