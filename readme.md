@@ -1,4 +1,5 @@
 # Ghost Finder
+
 ![image](https://user-images.githubusercontent.com/7611746/55557292-5ee78a00-570b-11e9-873c-fe86f1d6aafa.png)
 ![](https://img.shields.io/github/package-json/v/electronthemes/ghost-finder.svg)
 ![](https://img.shields.io/github/languages/code-size/electronthemes/ghost-finder.svg)
@@ -9,6 +10,12 @@
 ### Read the blog on this plugin from [here](https://electronthemes.com/blog/add-search-option-to-ghost-theme/)
 
 ## Installation
+
+```bash
+npm install ghost-finder
+```
+
+### OR
 
 ![download](https://img.icons8.com/material-sharp/24/000000/download-2.png) Download [ghost-finder-1.0.0.zip](https://github.com/electronthemes/ghost-finder/archive/v1.0.0.zip)
 
@@ -22,8 +29,8 @@
 
 ```html
 <div>
-    <input id="search-input" type="text" placeholder="Type to search" />
-    <div id="search-result"></div>
+  <input id="search-input" type="text" placeholder="Type to search" />
+  <div id="search-result"></div>
 </div>
 ```
 
@@ -31,15 +38,15 @@
 
 ```html
 <script>
-    new GhostFinder({
-        input: '#search-input',
-        showResult: '#search-result',
-        contentApiKey: //CONTENT API KEY...,
-    })
+  new GhostFinder({
+      input: '#search-input',
+      showResult: '#search-result',
+      contentApiKey: //CONTENT API KEY...,
+  })
 </script>
 ```
-To see how you can get contentApiKey , [Click Here](https://github.com/electronthemes/ghost-finder/wiki/How-to-get-contentApiKey-%3F)
 
+To see how you can get contentApiKey , [Click Here](https://github.com/electronthemes/ghost-finder/wiki/How-to-get-contentApiKey-%3F)
 
 ---
 
@@ -62,8 +69,8 @@ To see how you can get contentApiKey , [Click Here](https://github.com/electront
 
 ```html
 <ul class="search-results-wrapper">
-    <p>Search match(es): ##resultCount</p>
-    ##results
+  <p>Search match(es): ##resultCount</p>
+  ##results
 </ul>
 ```
 

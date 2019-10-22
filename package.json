@@ -1,29 +1,27 @@
 {
-    "name": "ghost-finder",
-    "version": "1.0.0",
-    "description": "The most advance ghost search plugin",
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "author": {
-        "name": "kingrayhan",
-        "email": "rayhan095@gmail.com",
-        "url": "https://rayhan.info"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "laravel-mix": "^4.0.15"
-    },
-    "dependencies": {
-        "@tryghost/content-api": "^1.2.0",
-        "babel-plugin-transform-class-properties": "^6.24.1",
-        "cross-env": "^5.2.0",
-        "dompurify": "^1.0.10",
-        "moment": "^2.24.0"
-    }
+  "name": "ghost-finder",
+  "version": "1.0.1",
+  "description": "The most advance ghost search plugin",
+  "main": "dist/ghost-finder.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "dev": "babel src -d dist --watch",
+    "test": "babel-node test/index"
+  },
+  "author": {
+    "name": "King Rayhan",
+    "email": "md.raihan095@northsouth.edu",
+    "url": "https://rayhan.info"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "dependencies": {
+    "@tryghost/content-api": "^1.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "dompurify": "^1.0.10",
+    "moment": "^2.24.0"
+  }
 }
