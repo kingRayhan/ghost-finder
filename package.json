@@ -1,36 +1,42 @@
 {
-  "name": "ghost-finder",
-  "version": "1.0.2",
-  "description": "The most advance ghost search plugin",
-  "main": "dist/ghost-finder.js",
-  "scripts": {
-    "build": "babel src -d dist",
-    "dev": "babel src -d dist --watch",
-    "test": "babel-node test/index"
-  },
-  "author": "King Rayhan <md.raihan095@northsouth.edu> (https://rayhan.info)",
-  "license": "MIT",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
-  },
-  "dependencies": {
-    "@tryghost/content-api": "^1.2.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "dompurify": "^1.0.10",
-    "moment": "^2.24.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/electronthemes/ghost-finder.git"
-  },
-  "keywords": [
-    "ghost",
-    "ghost-search",
-    "search"
-  ],
-  "bugs": {
-    "url": "https://github.com/electronthemes/ghost-finder/issues"
-  },
-  "homepage": "https://github.com/electronthemes/ghost-finder#readme"
+    "name": "ghost-finder",
+    "version": "1.0.2",
+    "description": "The most advance ghost search plugin",
+    "main": "dist/ghost-finder.js",
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "author": "King Rayhan <md.raihan095@northsouth.edu> (https://rayhan.info)",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/plugin-transform-runtime": "^7.6.2",
+        "cross-env": "^6.0.3",
+        "laravel-mix": "^5.0.0",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "@tryghost/content-api": "^1.2.0",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "dompurify": "^1.0.10",
+        "moment": "^2.24.0",
+        "sweetalert": "^2.1.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/electronthemes/ghost-finder.git"
+    },
+    "keywords": [
+        "ghost",
+        "ghost-search",
+        "search"
+    ],
+    "bugs": {
+        "url": "https://github.com/electronthemes/ghost-finder/issues"
+    },
+    "homepage": "https://github.com/electronthemes/ghost-finder#readme"
 }

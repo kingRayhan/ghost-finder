@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Ghost Finder</title>
+    </head>
+    <body>
+        <div>
+            <input id="search-input" type="text" placeholder="Type to search" />
+            <div id="search-result"></div>
+        </div>
+
+        <script src="dist/ghost-finder.js"></script>
+        <script>
+            new GhostFinder({
+                input: '#search-input',
+                showResult: '#search-result',
+                contentApiKey: '22444f78447824223cefc48062',
+                homeUrl: 'https://demo.ghost.io',
+            })
+        </script>
+    </body>
+</html>

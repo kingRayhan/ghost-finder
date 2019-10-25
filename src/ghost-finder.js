@@ -1,6 +1,6 @@
 /**
  * Ghost Finder
- * v1.0.1
+ * v3.0.0
  * @author kingrayhan
  * @url https://rayhan.info
  */
@@ -36,32 +36,16 @@ class GhostFinder {
          * Chekc for errors
          */
         if (input === undefined) {
-            return swal(
-                'Ghost Finder Error',
-                `Provide "input" selector in options`,
-                'error'
-            )
+            return swal('Ghost Finder Error', `Provide "input" selector in options`, 'error')
         }
         if (showResult === undefined) {
-            return swal(
-                'Ghost Finder Error',
-                `Provide "showResult" selector in options`,
-                'error'
-            )
+            return swal('Ghost Finder Error', `Provide "showResult" selector in options`, 'error')
         }
         if (homeUrl === undefined) {
-            return swal(
-                'Ghost Finder Error',
-                `Provide "homeUrl" selector in options`,
-                'error'
-            )
+            return swal('Ghost Finder Error', `Provide "homeUrl" selector in options`, 'error')
         }
         if (contentApiKey === undefined) {
-            return swal(
-                'Ghost Finder Error',
-                `Provide "contentApiKey" selector in options`,
-                'error'
-            )
+            return swal('Ghost Finder Error', `Provide "contentApiKey" selector in options`, 'error')
         }
 
         /**
@@ -88,7 +72,7 @@ class GhostFinder {
         this.api = new GhostContentAPI({
             url: this.homeUrl,
             key: this.contentApiKey,
-            version: 'v2',
+            version: 'v3',
         })
     }
 
@@ -108,9 +92,7 @@ class GhostFinder {
             include: 'tags,authors',
         })
 
-        const filteredPosts = posts.filter(post =>
-            post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-        )
+        const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(this.searchTerm.toLowerCase()))
 
         this.resultCount = filteredPosts.length
 
@@ -189,9 +171,7 @@ class GhostFinder {
                      */
 
                     if (post.published_at) {
-                        replacerObj['published_at'] = moment(
-                            post.published_at
-                        ).format(this.time_format)
+                        replacerObj['published_at'] = moment(post.published_at).format(this.time_format)
                     }
 
                     /**
@@ -199,22 +179,18 @@ class GhostFinder {
                      */
                     replacerObj['resultCount'] = this.resultCount
 
-                    return this.allReplace(
-                        this.singleResultTemplate,
-                        replacerObj
-                    )
+                    return this.allReplace(this.singleResultTemplate, replacerObj)
                 }) // map
                 .join(' ')
 
             // Push result html
             this.showResult.innerHTML =
                 this.resultTemplate !== undefined
-                    ? this.resultTemplate
-                          .replace('##results', result)
-                          .replace('##resultCount', this.resultCount)
+                    ? this.resultTemplate.replace('##results', result).replace('##resultCount', this.resultCount)
                     : result
         }
     }
 }
 
 global.GhostFinder = GhostFinder
+window.GhostFinder = GhostFinder
