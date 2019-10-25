@@ -92,7 +92,11 @@ class GhostFinder {
             include: 'tags,authors',
         })
 
-        const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(this.searchTerm.toLowerCase()))
+        const filteredPosts = posts.filter(post => {
+            // let contentText = DOMPurify.sanitize(post.html, { ALLOWED_TAGS: [''] })
+
+            return post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        })
 
         this.resultCount = filteredPosts.length
 

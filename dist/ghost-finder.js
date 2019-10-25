@@ -23204,6 +23204,7 @@ var GhostFinder = function GhostFinder(_ref) {
             case 3:
               posts = _context.sent;
               filteredPosts = posts.filter(function (post) {
+                // let contentText = DOMPurify.sanitize(post.html, { ALLOWED_TAGS: [''] })
                 return post.title.toLowerCase().includes(_this.searchTerm.toLowerCase());
               });
               _this.resultCount = filteredPosts.length; // if searchTerm's length is less then 1 character then stop here...

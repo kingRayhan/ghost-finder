@@ -29,8 +29,8 @@ npm install ghost-finder
 
 ```html
 <div>
-  <input id="search-input" type="text" placeholder="Type to search" />
-  <div id="search-result"></div>
+    <input id="search-input" type="text" placeholder="Type to search" />
+    <div id="search-result"></div>
 </div>
 ```
 
@@ -67,8 +67,8 @@ To see how you can get contentApiKey , [Click Here](https://github.com/electront
 
 ```html
 <ul class="search-results-wrapper">
-  <p>Search match(es): ##resultCount</p>
-  ##results
+    <p>Search match(es): ##resultCount</p>
+    ##results
 </ul>
 ```
 
@@ -93,3 +93,9 @@ To see how you can get contentApiKey , [Click Here](https://github.com/electront
 | `##published_at`          | Post publication date. Format can be change by `time_format` option |
 | `##feature_image`         | Post featured image url                                             |
 | `##resultCount`           | Matched result count                                                |
+
+## Logs
+
+```
+3.0.1 - Search on content and title
+```
