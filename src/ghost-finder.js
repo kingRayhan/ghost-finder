@@ -9,6 +9,7 @@ import GhostContentAPI from '@tryghost/content-api'
 import DOMPurify from 'dompurify'
 import moment from 'moment'
 import swal from 'sweetalert'
+import Mark from 'mark.js'
 
 const resultDefaultTemplate = `<ul class="search-results-wrapper">
                                     <p>Search match(es): ##resultCount</p>
@@ -31,6 +32,8 @@ class GhostFinder {
         singleResultTemplate = singleResultDefaultTemplate,
         excerpt_length = 15,
         time_format = 'MMMM Do YYYY',
+        mark = false,
+        markOptions = {},
     }) {
         /**
          * Chekc for errors
@@ -61,10 +64,23 @@ class GhostFinder {
         this.excerpt_length = excerpt_length
         this.time_format = time_format
 
+        // optionally set up mark.js instance 
+        if (mark) {
+            const context = document.querySelector(showResult)
+            this.markInstance = new Mark(context)
+        }
+
         /**
          * trigger when user type to search
          */
-        this.input.addEventListener('keyup', this.doSearch)
+        this.input.addEventListener('keyup', (e) => {
+            var that = this;
+            this.doSearch(e).then(() => {
+                if (mark) {
+                    that.markInstance.mark(that.input.value, markOptions)
+                }
+            })
+        })
 
         /**
          * Initialize ghost content api constructor
@@ -74,6 +90,7 @@ class GhostFinder {
             key: this.contentApiKey,
             version: 'v3',
         })
+
     }
 
     // Concept source: https://stackoverflow.com/a/17606289/3705299
@@ -190,7 +207,7 @@ class GhostFinder {
             // Push result html
             this.showResult.innerHTML =
                 this.resultTemplate !== undefined
-                    ? this.resultTemplate.replace('##results', result).replace('##resultCount', this.resultCount)
+                    ? this.resultTemplate.replace('##results', result).replace('##resultCount', this.resultCount).replace('##searchTerm', this.input.value)
                     : result
         }
     }
