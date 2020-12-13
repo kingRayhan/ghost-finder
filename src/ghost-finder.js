@@ -24,7 +24,7 @@ class GhostFinder {
 
     constructor({
         input,
-		clearButton,
+        clearButton,
         scrollOnSearch = false,
         showResult,
         contentApiKey,
