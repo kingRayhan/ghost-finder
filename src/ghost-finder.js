@@ -23,9 +23,11 @@ class GhostFinder {
     resultCount = 0
 
     constructor({
-        input,
+		input,
+		clearButton,
+		scrollOnSearch = false,
         showResult,
-        contentApiKey,
+		contentApiKey,
         homeUrl = window.location.origin,
         resultTemplate = resultDefaultTemplate,
         singleResultTemplate = singleResultDefaultTemplate,
@@ -51,7 +53,9 @@ class GhostFinder {
         /**
          * Options
          */
-        this.input = document.querySelector(input)
+		this.input = document.querySelector(input)
+		this.clearButton = document.querySelector(clearButton)
+		this.scrollOnSearch = scrollOnSearch
         this.homeUrl = homeUrl
         this.contentApiKey = contentApiKey
         this.resultTemplate = resultTemplate
@@ -64,7 +68,13 @@ class GhostFinder {
         /**
          * trigger when user type to search
          */
-        this.input.addEventListener('keyup', this.doSearch)
+		this.input.addEventListener('keyup', this.doSearch)
+		if (this.clearButton != null){
+			this.clearButton.addEventListener('click', (e) => {
+				this.input.value = '';
+				this.showResult.innerHTML = ''
+			})
+		}
 
         /**
          * Initialize ghost content api constructor
@@ -85,16 +95,19 @@ class GhostFinder {
     }
 
     doSearch = async e => {
-        this.searchTerm = e.target.value
+		this.searchTerm = e.target.value
+		
+		// Scroll window to top
+		if (this.scrollOnSearch === true) window.scrollTo(0, 0);
+
         const posts = await this.api.posts.browse({
             limit: 'all',
             fields: `title,url,slug,html,feature_image,published_at,primary_author,primary_tag`,
             include: 'tags,authors',
-        })
+		})
 
         const filteredPosts = posts.filter(post => {
             // let contentText = DOMPurify.sanitize(post.html, { ALLOWED_TAGS: [''] })
-
             return post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
         })
 
