@@ -22,7 +22,7 @@
     "dependencies": {
         "@tryghost/content-api": "^1.2.0",
         "babel-plugin-transform-class-properties": "^6.24.1",
-        "dompurify": "^1.0.10",
+        "dompurify": "^2.0.17",
         "moment": "^2.24.0",
         "sweetalert": "^2.1.2"
     },
