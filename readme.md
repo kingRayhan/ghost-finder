@@ -1,6 +1,4 @@
 # Ghost Finder
-
-![image](https://user-images.githubusercontent.com/7611746/55557292-5ee78a00-570b-11e9-873c-fe86f1d6aafa.png)
 ![](https://img.shields.io/github/package-json/v/electronthemes/ghost-finder.svg)
 ![](https://img.shields.io/github/languages/code-size/electronthemes/ghost-finder.svg)
 ![](https://img.shields.io/github/license/electronthemes/ghost-finder.svg)
