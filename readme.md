@@ -92,7 +92,5 @@ To see how you can get contentApiKey , [Click Here](https://github.com/kingrayha
 | `##resultCount`           | Matched result count                                                |
 
 ## Logs
+- 3.1.0 - Search on content along with title, Replace [laravel-mix](https://laravel-mix.com/) with [parcel](https://parceljs.org/)
 
-```
-3.0.1 - Search on content and title
-```
