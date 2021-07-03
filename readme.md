@@ -1,4 +1,5 @@
 # Ghost Finder
+
 ![](https://img.shields.io/github/package-json/v/electronthemes/ghost-finder.svg)
 ![](https://img.shields.io/github/languages/code-size/electronthemes/ghost-finder.svg)
 ![](https://img.shields.io/github/license/electronthemes/ghost-finder.svg)
@@ -15,7 +16,7 @@ npm install ghost-finder
 
 ### OR
 
-![download](https://img.icons8.com/material-sharp/24/000000/download-2.png) Download [ghost-finder-1.0.0.zip](https://github.com/electronthemes/ghost-finder/archive/v1.0.0.zip)
+![download](https://img.icons8.com/material-sharp/24/000000/download-2.png) Download [ghost-finder-1.0.0.zip](https://github.com/kingrayhan/ghost-finder/archive/v1.0.0.zip)
 
 **Include script**
 
@@ -27,8 +28,8 @@ npm install ghost-finder
 
 ```html
 <div>
-    <input id="search-input" type="text" placeholder="Type to search" />
-    <div id="search-result"></div>
+  <input id="search-input" type="text" placeholder="Type to search" />
+  <div id="search-result"></div>
 </div>
 ```
 
@@ -42,22 +43,22 @@ new GhostFinder({
 })
 ```
 
-To see how you can get contentApiKey , [Click Here](https://github.com/electronthemes/ghost-finder/wiki/How-to-get-contentApiKey-%3F)
+To see how you can get contentApiKey , [Click Here](https://github.com/kingrayhan/ghost-finder/wiki/How-to-get-contentApiKey-%3F)
 
 ---
 
 ### Options
 
-| Name                 | Default Value       | Details                                            |
-| -------------------- | ------------------- | -------------------------------------------------- |
-| input                | `null` **Required** | DOM selector of search input                       |
-| showResult           | `null` **Required** | DOM selector where search result will be pluged-in |
-| homeUrl              | current website url | Your ghost site url                                |
-| contentApiKey        | `null` **Required** | content api key                                    |
-| resultTemplate       | see bellow          | Result wrapper template for search result          |
-| singleResultTemplate | see bellow          | Single search result template                      |
-| excerpt_length       | 15                  | word count to show in `##excerpt` variable         |
-| time_format          | `'MMMM Do YYYY'`    | Time format string for `##published_at` variable   |
+| Name                 | Default Value       | Details                                                                                                                   |
+| -------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| input                | `null` **Required** | DOM selector of search input                                                                                              |
+| showResult           | `null` **Required** | DOM selector where search result will be pluged-in                                                                        |
+| homeUrl              | current website url | Your ghost site url                                                                                                       |
+| contentApiKey        | `null` **Required** | content api key                                                                                                           |
+| resultTemplate       | see bellow          | Result wrapper template for search result                                                                                 |
+| singleResultTemplate | see bellow          | Single search result template                                                                                             |
+| excerpt_length       | 250                 | word count to show in `##excerpt` variable                                                                                |
+| time_format          | `'MMMM Do YYYY'`    | Time format string for `##published_at` variable. [Available formats](https://momentjs.com/docs/#/parsing/string-format/) |
 
 ### Default templates
 
@@ -65,8 +66,8 @@ To see how you can get contentApiKey , [Click Here](https://github.com/electront
 
 ```html
 <ul class="search-results-wrapper">
-    <p>Search match(es): ##resultCount</p>
-    ##results
+  <p>Search match(es): ##resultCount</p>
+  ##results
 </ul>
 ```
 

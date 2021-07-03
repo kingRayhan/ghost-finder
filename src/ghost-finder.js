@@ -4,11 +4,9 @@
  * @author kingrayhan
  * @url https://rayhan.info
  */
-
+import 'regenerator-runtime/runtime'
 import GhostContentAPI from '@tryghost/content-api'
-import DOMPurify from 'dompurify'
 import moment from 'moment'
-import swal from 'sweetalert'
 
 const resultDefaultTemplate = `<ul class="search-results-wrapper">
                                     <p>Search match(es): ##resultCount</p>
@@ -29,23 +27,23 @@ class GhostFinder {
         homeUrl = window.location.origin,
         resultTemplate = resultDefaultTemplate,
         singleResultTemplate = singleResultDefaultTemplate,
-        excerpt_length = 15,
+        excerpt_length = 250,
         time_format = 'MMMM Do YYYY',
     }) {
         /**
          * Chekc for errors
          */
         if (input === undefined) {
-            return swal('Ghost Finder Error', `Provide "input" selector in options`, 'error')
+            throw new Error(`Provide "input" selector in options`)
         }
         if (showResult === undefined) {
-            return swal('Ghost Finder Error', `Provide "showResult" selector in options`, 'error')
+            throw new Error(`Provide "showResult" selector in options`)
         }
         if (homeUrl === undefined) {
-            return swal('Ghost Finder Error', `Provide "homeUrl" selector in options`, 'error')
+            throw new Error(`Provide "homeUrl" selector in options`)
         }
         if (contentApiKey === undefined) {
-            return swal('Ghost Finder Error', `Provide "contentApiKey" selector in options`, 'error')
+            throw new Error(`Provide "contentApiKey" selector in options`)
         }
 
         /**
@@ -88,14 +86,13 @@ class GhostFinder {
         this.searchTerm = e.target.value
         const posts = await this.api.posts.browse({
             limit: 'all',
-            fields: `title,url,slug,html,feature_image,published_at,primary_author,primary_tag`,
+            fields: `title,url,slug,feature_image,published_at,primary_author,primary_tag`,
             include: 'tags,authors',
+            formats: ['plaintext']
         })
 
         const filteredPosts = posts.filter(post => {
-            // let contentText = DOMPurify.sanitize(post.html, { ALLOWED_TAGS: [''] })
-
-            return post.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+            return post.title.toLowerCase().includes(this.searchTerm.toLowerCase()) || post.plaintext.toLowerCase().includes(this.searchTerm.toLowerCase())
         })
 
         this.resultCount = filteredPosts.length
@@ -158,14 +155,8 @@ class GhostFinder {
                      * ---------------
                      * ##excerpt
                      */
-                    if (post.html) {
-                        let excerpt = DOMPurify.sanitize(post.html, {
-                            ALLOWED_TAGS: [''],
-                        })
-                            .split(' ')
-                            .slice(0, this.excerpt_length)
-                            .join(' ')
-                        replacerObj['excerpt'] = excerpt
+                    if (post.plaintext) {
+                        replacerObj['excerpt'] = post.plaintext.slice(0, this.excerpt_length)
                     }
 
                     /**
@@ -195,6 +186,6 @@ class GhostFinder {
         }
     }
 }
-
+export default GhostFinder
 global.GhostFinder = GhostFinder
 window.GhostFinder = GhostFinder
