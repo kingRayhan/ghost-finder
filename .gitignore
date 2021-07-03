@@ -1,4 +1,5 @@
 /node_modules
+/example/dist
 yarn-error.log
 package-lock.json
 .cache

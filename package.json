@@ -5,7 +5,7 @@
     "main": "dist/ghost-finder.js",
     "scripts": {
         "build": "parcel build src/ghost-finder.js -d dist",
-        "demo": "parcel demo/index.html --out-dir demo-dist"
+        "example": "parcel example/index.html --out-dir example/dist"
     },
     "author": "King Rayhan <md.raihan095@northsouth.edu> (https://rayhan.info)",
     "license": "MIT",
