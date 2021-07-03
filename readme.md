@@ -6,8 +6,6 @@
 ![](https://img.shields.io/github/issues-raw/electronthemes/ghost-finder.svg?style=plastic)
 ![](https://img.shields.io/github/last-commit/electronthemes/ghost-finder.svg)
 
-### Read the blog on this plugin from [here](https://electronthemes.com/blog/add-search-option-to-ghost-theme/)
-
 ## Installation
 
 ```bash
