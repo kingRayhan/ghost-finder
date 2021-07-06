@@ -6,7 +6,7 @@
  */
 import 'regenerator-runtime/runtime'
 import GhostContentAPI from '@tryghost/content-api'
-import moment from 'moment'
+import dateFnsFormat from 'date-fns/format'
 
 const resultDefaultTemplate = `<ul class="search-results-wrapper">
                                     <p>Search match(es): ##resultCount</p>
@@ -28,7 +28,10 @@ class GhostFinder {
         resultTemplate = resultDefaultTemplate,
         singleResultTemplate = singleResultDefaultTemplate,
         excerpt_length = 250,
-        time_format = 'MMMM Do YYYY',
+        /*
+         *time_format = 'MMMM Do YYYY',
+         */
+        time_format = 'MMMM dd yyyy',
     }) {
         /**
          * Chekc for errors
@@ -137,7 +140,7 @@ class GhostFinder {
                      * primary_author_avater
                      */
                     if (post.primary_author) {
-                        const { name, profile_image, url } = post.primary_author
+                        const {name, profile_image, url} = post.primary_author
                         replacerObj['primary_author_name'] = name
                         replacerObj['primary_author_url'] = url
                         replacerObj['primary_author_avater'] = profile_image
@@ -166,7 +169,7 @@ class GhostFinder {
                      */
 
                     if (post.published_at) {
-                        replacerObj['published_at'] = moment(post.published_at).format(this.time_format)
+                        replacerObj['published_at'] = dateFnsFormat(new Date(post.published_at), this.time_format)
                     }
 
                     /**
