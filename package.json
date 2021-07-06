@@ -1,6 +1,6 @@
 {
     "name": "ghost-finder",
-    "version": "3.1.1",
+    "version": "3.1.2",
     "description": "The most advance ghost search plugin",
     "main": "dist/ghost-finder.js",
     "scripts": {
