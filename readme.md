@@ -14,7 +14,7 @@ npm install ghost-finder
 
 ### OR
 
-![download](https://img.icons8.com/material-sharp/24/000000/download-2.png) Download [ghost-finder-3.1.0.zip](https://github.com/kingrayhan/ghost-finder/archive/v3.1.0.zip)
+![download](https://img.icons8.com/material-sharp/24/000000/download-2.png) Download [ghost-finder-3.1.1.zip](https://github.com/kingrayhan/ghost-finder/archive/v3.1.0.zip)
 
 **Include script**
 
