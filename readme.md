@@ -56,7 +56,7 @@ To see how you can get contentApiKey , [Click Here](https://github.com/kingrayha
 | resultTemplate       | see bellow          | Result wrapper template for search result                                                                                 |
 | singleResultTemplate | see bellow          | Single search result template                                                                                             |
 | excerpt_length       | 250                 | word count to show in `##excerpt` variable                                                                                |
-| time_format          | `'MMMM Do YYYY'`    | Time format string for `##published_at` variable. [Available formats](https://momentjs.com/docs/#/parsing/string-format/) |
+| time_format          | `'MMMM dd yyyy'`    | Time format string for `##published_at` variable. [Available formats](https://date-fns.org/v2.22.1/docs/format#description) |
 
 ### Default templates
 
