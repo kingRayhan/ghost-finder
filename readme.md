@@ -1,6 +1,6 @@
 # Ghost Finder
 
-![](./Ghost-Finder.png)
+![](./ghost-finder.png)
 
 
 ![](https://img.shields.io/github/package-json/v/electronthemes/ghost-finder.svg)
