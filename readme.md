@@ -1,4 +1,5 @@
 # Ghost Finder
+Here's a helpful npm package I made. This addon allows you to easily and sweetly incorporate search features into your ghost theme. It operates using the Ghost Content API.
 
 ![](./ghost-finder.png)
 
